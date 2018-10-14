@@ -3,7 +3,9 @@
  */
 public class Client {
 
-    private String nombre;
+    //public , friendly, protected, private
+
+    protected String nombre;
     private int monto;
 
     public Client(String nombreCliente) {

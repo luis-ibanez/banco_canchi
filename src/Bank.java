@@ -14,6 +14,7 @@ public class Bank {
     private Client cliente1;
     private Client cliente2;
     private Client cliente3;
+    private Client cliente4;
     private int saldoBanco;
 
     public Bank() {
@@ -21,6 +22,8 @@ public class Bank {
         cliente1 = new Client("pedro");
         cliente2 = new Client("iris");
         cliente3 = new Client("amparo");
+        cliente4 = new ClienteEmpresa("Manolo", "SEUR");
+
     }
 
     public void realizarOperaciones() {
@@ -73,6 +76,19 @@ public class Bank {
                     cantidad = teclado.nextInt();
                     cliente3.extraerMonto(cantidad);
                 }
+            } else if (nombre.equals(cliente4.toString())) {
+                System.out.println("Introduce la operacion a realizar, depositar o extraer");
+                queRealizar = teclado.next();
+                if (queRealizar.equals(depositar)) {
+                    System.out.println("Introduce la cantidad a depositar: ");
+                    cantidad = teclado.nextInt();
+                    cliente4.depositarMonto(cantidad);
+                }
+                if (queRealizar.equals(extraer)) {
+                    System.out.println("Introduce la cantidad a extraer: ");
+                    cantidad = teclado.nextInt();
+                    cliente4.extraerMonto(cantidad);
+                }
             }
             System.out.println("Deseas realizar otra operacion pulsa 1 si no pulsa 0.");
             finalizar = teclado.nextInt();
@@ -85,11 +101,13 @@ public class Bank {
                 "El nombre del cliente es: " + cliente2.toString() +
                 " y su saldo es de:\t\t" + cliente2.retornarMonto() + "\n" +
                 "El nombre del cliente es: " + cliente3.toString() +
-                " y su saldo es de:\t\t" + cliente3.retornarMonto());
+                " y su saldo es de:\t\t" + cliente3.retornarMonto()+ "\n" +
+                "El nombre del cliente es: " + cliente4.toString() +
+                " y su saldo es de:\t\t" + cliente4.retornarMonto());
     }
 
     public void imprimirSaldoTotalBanco() {
-        saldoBanco = (cliente1.retornarMonto() + cliente2.retornarMonto() + cliente3.retornarMonto());
+        saldoBanco = (cliente1.retornarMonto() + cliente2.retornarMonto() + cliente3.retornarMonto() + cliente4.retornarMonto());
         System.out.println("El saldo total del banco es de: " + saldoBanco);
     }
 }
