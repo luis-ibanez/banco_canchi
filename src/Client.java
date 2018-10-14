@@ -1,12 +1,12 @@
 /**
  * Created by libanez on 14/10/2018.
  */
-public class NewClient {
+public class Client {
 
     private String nombre;
     private int monto;
 
-    public NewClient(String nombreCliente) {
+    public Client(String nombreCliente) {
         nombre = nombreCliente;
         monto = 0;
     }

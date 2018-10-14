@@ -4,24 +4,27 @@
 import java.util.Scanner;
 
 
-public class NewBanc {
+public class Bank {
+
+    private final static String extraer = "extraer";
+    private final static String depositar = "depositar";
+
+
     private Scanner teclado;
-    private NewClient cliente1;
-    private NewClient cliente2;
-    private NewClient cliente3;
+    private Client cliente1;
+    private Client cliente2;
+    private Client cliente3;
     private int saldoBanco;
 
-    public NewBanc() {
+    public Bank() {
         teclado = new Scanner(System.in);
-        cliente1 = new NewClient("pedro");
-        cliente2 = new NewClient("iris");
-        cliente3 = new NewClient("amparo");
+        cliente1 = new Client("pedro");
+        cliente2 = new Client("iris");
+        cliente3 = new Client("amparo");
     }
 
     public void realizarOperaciones() {
         String nombre;
-        String extraer = "extraer";
-        String depositar = "depositar";
         String queRealizar;
 
         int finalizar = 1;
@@ -70,7 +73,6 @@ public class NewBanc {
                     cantidad = teclado.nextInt();
                     cliente3.extraerMonto(cantidad);
                 }
-
             }
             System.out.println("Deseas realizar otra operacion pulsa 1 si no pulsa 0.");
             finalizar = teclado.nextInt();
@@ -78,23 +80,16 @@ public class NewBanc {
     }
 
     public void imprimirClienteYSaldo() {
-        System.out.println("El nombre del cliente es: " + cliente1.toString());
-        System.out.println("y su saldo es de:         " + cliente1.retornarMonto());
-        System.out.println("El nombre del cliente es: " + cliente2.toString());
-        System.out.println("y su saldo es de:         " + cliente2.retornarMonto());
-        System.out.println("El nombre del cliente es: " + cliente3.toString());
-        System.out.println("y su saldo es de:         " + cliente3.retornarMonto());
+        System.out.println("El nombre del cliente es: " + cliente1.toString() +
+                " y su saldo es de:\t\t" + cliente1.retornarMonto() + "\n" +
+                "El nombre del cliente es: " + cliente2.toString() +
+                " y su saldo es de:\t\t" + cliente2.retornarMonto() + "\n" +
+                "El nombre del cliente es: " + cliente3.toString() +
+                " y su saldo es de:\t\t" + cliente3.retornarMonto());
     }
 
     public void imprimirSaldoTotalBanco() {
         saldoBanco = (cliente1.retornarMonto() + cliente2.retornarMonto() + cliente3.retornarMonto());
         System.out.println("El saldo total del banco es de: " + saldoBanco);
-    }
-
-    public static void main(String[] args) {
-        NewBanc otroBanco = new NewBanc();
-        otroBanco.realizarOperaciones();
-        otroBanco.imprimirClienteYSaldo();
-        otroBanco.imprimirSaldoTotalBanco();
     }
 }
